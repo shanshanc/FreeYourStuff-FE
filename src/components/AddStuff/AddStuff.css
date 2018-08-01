@@ -1,0 +1,288 @@
+
+.uploader {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  justify-content: space-evenly;
+}
+
+.uploadToPic {
+  width: 100vw;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.file-drop-target {
+  border: 2px dashed #ccc;
+  border-radius: 20px;
+  width: 100px;
+  height: 100px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+
+}
+
+.file-drop-target i {
+  color: var(--primary);
+  font-size: 2rem;
+}
+
+#fileuploader {
+  display: none;
+}
+
+.photoMaker {
+  background-color: var(--primary);
+  width: 100px;
+  height: 100px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.photoMaker i {
+  color: white;
+  font-size: 2rem;
+}
+
+.upLoadText {
+  display: none;
+}
+
+.cameraLand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.snap {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  border-radius: 50%;
+  border: 2px solid darkred;
+  margin-top: 10px;
+}
+
+.picturePresent {
+  min-height: 80vh;
+  width: 90vw;
+  margin-left: 5vw;
+  padding-top: 2vh;
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.picturePresent img {
+  padding-top: 9vh;
+  height: 38vh;
+  width: 100%;
+}
+
+.tags {
+  margin-top: 0vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  height: 20vh;
+  min-width: 90vw;
+}
+
+.tags p {
+  padding: 15px;
+  max-height: 15px;
+  color: white;
+  background-color: var(--primary);
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: -10px;
+  border-radius: 25px;
+  box-shadow: 0px 3px 6px 3px rgb(100,100,100, .2);
+  display: inline-block;
+}
+
+.prompts {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 0vh;
+  width: 90vw;
+  margin-top: 5vh;
+}
+
+.addSpan {
+  padding: 13px 18px;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 25px;
+  /* position: absolute; */
+  transition: transform .6s;
+}
+
+.span1 {
+  left: 6vw;
+}
+
+.span2 {
+  margin-top: 15vh;
+}
+
+.span3 {
+  font-size: 1.2rem;
+
+  margin-top: 23vh;
+  margin-bottom: 2vh;
+  border: 2px dotted var(--primary) !important
+
+
+}
+
+.span3:hover {
+  transform: scale(1.3);
+  transition: transform .2s;
+
+}
+
+.stageTwo {
+  margin-left: 15vw;
+}
+
+.glow {
+  transition: transform .6s;
+  transform: scale(1.1);
+}
+
+.dying {
+  background-color: #af111c !important;
+  transition: background-color .5s cubic-bezier(.38,1.4,.84,1.57) .2s;
+  text-decoration: line-through;
+  text-decoration-color: red;
+}
+
+.dead {
+  display: none !important;
+}
+
+
+
+
+
+
+@media (min-width: 700px) {
+  .prompts {
+    width: 80vw;
+  }
+
+  .addSpan {
+    padding: 30px;
+    font-size: 1.2rem;
+  }
+
+  .picturePresent {
+    width: 70vw;
+    margin-left: 15vw;
+  }
+
+  .picturePresent p {
+    font-size: 1.5rem;
+    padding: 25px;
+    margin-bottom: -10px;
+  }
+
+  .tags {
+    min-width: 80vw;
+  }
+
+}
+
+@media (min-width: 900px) {
+
+  .picturePresent {
+    width: 60vw;
+    margin-left: 20vw;
+  }
+
+  .picturePresent p {
+    font-size: 1.5rem;
+    padding: 25px;
+    margin-bottom: -10px;
+  }
+
+  .tags {
+    min-width: 60vw;
+  }
+
+}
+
+@media (min-width: 1350px) {
+
+  .uploader {
+    width: 70vw;
+    margin-left: 15vw;
+  }
+
+  .uploadToPic {
+    height: 50vh;
+    margin-top: -5vh;
+  }
+
+  .file-drop-target {
+    width: 20vw;
+    height: 15vh; 
+    justify-content: space-evenly;
+    margin-bottom: 0vh;
+  }
+
+  .file-drop-target i {
+    font-size: 4rem;
+  }
+
+  .photoDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 20vw;
+    height: 15vh;
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+  }
+
+  .upLoadText {
+    display: inline;
+  }
+
+  .addSpan {
+    padding: 40px;
+    font-size: 2rem;
+  }
+
+  .prompts {
+    width: 60vw;
+  }
+
+  .picturePresent {
+    width: 40vw;
+    margin-left: 30vw;
+  }
+
+  .picturePresent p {
+    font-size: 1.5rem;
+    padding: 25px;
+    margin-bottom: -10px;
+  }
+
+  .tags {
+    min-width: 40vw;
+  }
+}

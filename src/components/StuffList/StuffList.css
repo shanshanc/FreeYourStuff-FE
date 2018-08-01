@@ -1,0 +1,43 @@
+.stuffList {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 7vh
+}
+
+.stuffList h2 {
+  margin-bottom: -15px;
+  border-bottom: 1px solid lightgrey
+}
+
+
+
+
+
+
+
+@media (min-width: 600px) {
+
+}
+
+@media (min-width: 900px) {
+
+}
+
+@media (min-width: 1400px) {
+  .stuffList {
+    width: 70vw;
+    margin-left: 15vw;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .stuffList h2 {
+    width: 100%;
+    text-align: center;
+  }
+}

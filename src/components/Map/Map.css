@@ -1,0 +1,63 @@
+
+
+.mapDiv {
+  padding-top: 9vh;
+  max-height: 91vh;
+  overflow: hidden;
+  
+
+}
+
+.mapDiv .map {
+  padding-top: 8.5vh;
+  height: 91vh !important;
+
+}
+
+Map {
+  position: relative;
+
+}
+
+
+.infoTag {
+  font-size: 1rem;
+  display: block;
+  margin: 5px;
+  border-bottom: 1px solid lightgrey;
+
+}
+
+.infoTag:hover {
+transform: scale(1.2);
+transition: transform .3s
+}
+
+
+
+
+
+
+
+@media (min-width: 600px) {
+
+}
+
+@media (min-width: 900px) {
+  .mapDiv {
+    padding-top: 9vh; 
+    max-height: 85vh !important;
+  }
+  .mapDiv .map {
+    max-width: 70vw !important;
+    margin-left: 15vw;
+    overflow: hidden;
+    margin-bottom: -8.5vh;
+    padding-bottom: 0px;
+  }
+
+}
+
+@media (min-width: 1200px) {
+
+}
