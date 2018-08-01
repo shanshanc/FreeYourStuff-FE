@@ -9,7 +9,7 @@ export default store => next => action => {
     type: action.type + '_REQUEST'
   })
 
-  fetch(`http://192.168.1.127:3000/update/${action.data.id}`, {
+  fetch(`https://fys-demo.herokuapp.com/update/${action.data.id}`, {
     method: 'PUT',
     headers: {
       "Content-Type":"application/json"

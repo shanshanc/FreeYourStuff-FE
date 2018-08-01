@@ -8,7 +8,7 @@ export default store => next => action => {
     type: action.type + '_REQUEST'
   })
 
-    fetch('http://192.168.1.127:3000/create', {
+    fetch('https://fys-demo.herokuapp.com/create', {
       method: 'POST',
       headers: {
         "Content-Type":"application/json"

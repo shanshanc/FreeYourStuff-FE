@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Webcam from 'react-webcam'
+// import Webcam from 'react-webcam'
 import PhotoMaker from '../PhotoMaker/PhotoMaker';
 import TagPrompts from '../TagPrompts/TagPrompts';
 import { connect } from 'react-redux';
@@ -44,13 +44,13 @@ class AddStuff extends Component {
   }
 
 
-  setRef = (webcam) => {
-    this.webcam = webcam
-  }
+  // setRef = (webcam) => {
+  //   this.webcam = webcam
+  // }
 
-  startRecording = () => {
-    this.setState({recording: true})
-  }
+  // startRecording = () => {
+  //   this.setState({recording: true})
+  // }
 
   capture = () => {
     const imageSrc = this.webcam.getScreenshot();
@@ -85,20 +85,20 @@ class AddStuff extends Component {
   render() {
     if (this.state.finished === true) { return <Fireworks />
   } else if (this.state.recording) {
-      const videoConstraints = {
-        video:true,
-        audio:false
-      };
-      return (
-        <div className="cameraLand">
-          <Webcam 
-          audio={false}
-          ref={this.setRef}
-          screenshotFormat='image/jpeg'
-          videoConstraints={videoConstraints} />
-          <button className='snap' onClick={this.capture} />
-        </div>
-      )
+      // const videoConstraints = {
+      //   video:true,
+      //   audio:false
+      // };
+      // return (
+      //   <div className="cameraLand">
+      //     <Webcam 
+      //     audio={false}
+      //     ref={this.setRef}
+      //     screenshotFormat='image/jpeg'
+      //     videoConstraints={videoConstraints} />
+      //     <button className='snap' onClick={this.capture} />
+      //   </div>
+      //)
     } else if (this.props.googleTags.length > 0) {
       return (
         <div className="picturePresent">

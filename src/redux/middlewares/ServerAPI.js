@@ -9,7 +9,7 @@ export default store => next => action => {
     type: action.type + '_REQUEST'
   })
 
-  fetch('http://192.168.1.127:3000/getStuff')
+  fetch('https://fys-demo.herokuapp.com/getStuff')
     .then(data => data.json())
     .then(data => {
 
