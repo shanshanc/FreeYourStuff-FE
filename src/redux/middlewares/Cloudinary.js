@@ -2,7 +2,6 @@ import axios from "axios";
 import { urlFromCloudinarySuccess } from '../actions'
 
 const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dh9xnvxbz/upload/';
-const CLOUDINARY_PRESET = 'xnny1dgk';
 
 
 

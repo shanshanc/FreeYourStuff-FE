@@ -10,7 +10,9 @@ class StuffList extends Component {
 
   render () {
 
-    if (!this.props.sorted) return <Loading />
+    console.log(this.props)
+
+    if (!this.props.gifts) return <Loading />
 
     else 
     
@@ -20,7 +22,7 @@ class StuffList extends Component {
       <h2> Find a gift </h2>
 
         {this.props.gifts.map(item => {
-          return <Stuff key={item._id} data={item} myLocation={this.props.location}/> //myMap={this.props.myMap}
+          return <Stuff key={item._id} data={item} myLocation={this.props.location}/>
         })} 
         
       </div>

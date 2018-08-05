@@ -53,12 +53,21 @@ export default class LandingPage extends Component {
             </div>
           </Link>
 
-          <Link to="/update">
+          { this.props.closest && this.props.closest.distance < 0.025 ? 
+            <Link to="/update">
+              <div className="button" ref="update">
+                <i className="fas fa-edit"/>
+                <p className="buttonText"> Update </p>
+              </div>
+            </Link>
+          :
             <div className="button noUpdate" ref="update">
               <i className="fas fa-edit"/>
               <p className="buttonText"> Update </p>
             </div>
-          </Link>
+           }
+
+
 
       </div>
       </div>

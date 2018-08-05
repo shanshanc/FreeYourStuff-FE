@@ -1,4 +1,4 @@
-import { getAllGifts, sendNewGiftToDBSuccess } from '../actions'
+import { sendNewGiftToDBSuccess } from '../actions'
 
 export default store => next => action => {
   if (action.type !== 'NEW_GIFT_TO_DB') return next(action)

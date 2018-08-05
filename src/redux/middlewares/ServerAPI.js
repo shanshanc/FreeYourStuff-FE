@@ -8,11 +8,11 @@ export default store => next => action => {
     ...action,
     type: action.type + '_REQUEST'
   })
-
+  console.log("fethcing")
   fetch('https://fys-demo.herokuapp.com/getStuff')
     .then(data => data.json())
     .then(data => {
-
+      console.log(data)
       store.dispatch(getAllGiftsSuccess(data))
     })
     .catch(err => {

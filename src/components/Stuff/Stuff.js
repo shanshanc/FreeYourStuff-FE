@@ -15,8 +15,9 @@ class Stuff extends Component {
 
   render() {
     let stuff = this.props.data;
-    if (!stuff.distance) stuff.distance = 500;
-    let address = stuff.address.split(',').slice(0,2);
+    if (!stuff.distance) stuff.distance = 0;
+    let address = "";
+    if(stuff.adress) address = stuff.address.split(',').slice(0,2);
     let style;
     if (stuff.location) {
       let brng = helpers.getBearing(stuff.location.lat, stuff.location.lng, this.props.myLocation.lat, this.props.myLocation.lng)

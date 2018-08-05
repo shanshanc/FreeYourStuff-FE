@@ -1,6 +1,6 @@
 
 .uploader {
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +18,7 @@
   margin-top: 50px;
 }
 
-.file-drop-target {
+/* .file-drop-target {
   border: 2px dashed #ccc;
   border-radius: 20px;
   width: 100px;
@@ -28,12 +28,12 @@
   align-items: center;
   margin-bottom: 50px;
 
-}
+} */
 
-.file-drop-target i {
+/* .file-drop-target i {
   color: var(--primary);
   font-size: 2rem;
-}
+} */
 
 #fileuploader {
   display: none;
@@ -237,12 +237,12 @@
     margin-top: -5vh;
   }
 
-  .file-drop-target {
+  /* .file-drop-target {
     width: 20vw;
     height: 15vh; 
     justify-content: space-evenly;
     margin-bottom: 0vh;
-  }
+  } */
 
   .file-drop-target i {
     font-size: 4rem;

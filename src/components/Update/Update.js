@@ -42,6 +42,7 @@ class Update extends Component {
 
     this.props.updateGiftInDB(updateGift)
     this.setState({finished: true})
+
   }
 
   killTag = (e) => {
@@ -53,7 +54,11 @@ class Update extends Component {
     e.target.classList.add('dead')
   }
 
-  deleteGift = () => this.props.deleteGiftFromDB(this.props.gift._id)
+  deleteGift = () => {
+    this.props.deleteGiftFromDB(this.props.gift._id)
+    this.setState({finished: true})
+
+  }
 
   constructor(props) {
     super(props) 

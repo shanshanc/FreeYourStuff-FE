@@ -6,7 +6,7 @@ export default store => next => action => {
     type: action.type + '_REQUEST'
   })
 
-  fetch(`https://fys-demo.herokuapp.com/${action.data}`, {
+  fetch(`https://fys-demo.herokuapp.com/delete/${action.data}`, {
     method:'DELETE',
     headers: {
       'Content-Type': 'application/json'

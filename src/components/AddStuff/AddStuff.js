@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { urlFromCloudinary, getTagsFromGoogle, getGeocode, sendNewGiftToDB} from '../../redux/actions'
 import './AddStuff.css'
 import Fireworks from '../Fireworks/Fireworks';
+import Loading from '../loading/Loading';
 
 const CLOUDINARY_PRESET = 'xnny1dgk'
 
@@ -19,7 +20,6 @@ class AddStuff extends Component {
     formData.append('file', picture)
     formData.append('upload_preset', CLOUDINARY_PRESET)
     formData.append('api_key', '981645852329497')
-
     this.props.urlFromCloudinary(formData)
   }
 
@@ -70,6 +70,7 @@ class AddStuff extends Component {
       deadTags: [],
       recording: false,
       finished: false,
+      loading: false,
     }
   }
 
@@ -118,14 +119,14 @@ class AddStuff extends Component {
 
       return(<h1> SUCcESS </h1>)
     
-    } else {
+    } else if (this.props.cloudinaryURL.length === 0) {
       return (
         <div className="uploader">
           <PhotoMaker uploadPic={this.uploadPic} startRecording={this.startRecording} />
           <TagPrompts number={3} buttonName={'Send'}/>
         </div>
       )
-    }
+    } else return <Loading />
   }
 }
 

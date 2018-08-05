@@ -36,7 +36,9 @@ export default class Header extends Component {
         <i className="fas fa-arrow-left"></i>
       </Link>
         <p>{header}</p>
+      <Link to='/'>
         <img src="./images/icons/android-icon-144x144.png" alt="small logo icon"></img>
+      </Link>
       </div>
     )
   }

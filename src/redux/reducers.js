@@ -53,6 +53,7 @@ const reducer = (state = initialState, action) => {
       
 
     case 'SORT_ALL_GIFTS':
+      console.log("TRING TO SORT")
       let data = state.gifts;
       data.forEach(gift => {
         if (gift.location) gift.distance = helpers.getDistance(gift.location.lat, gift.location.lng, state.location.lat, state.location.lng)
@@ -84,8 +85,8 @@ const reducer = (state = initialState, action) => {
     case 'URL_FROM_CLOUDINARY_SUCCESS':
       return {
         ...state,
-        cloudinaryURL: action.data,
         waitingForApi: false,
+        cloudinaryURL: action.data,
       }
 
 
@@ -99,7 +100,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         googleTags: action.data,
-        waitingForApi: false,
         needTags: false,
       }
 

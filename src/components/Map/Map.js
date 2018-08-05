@@ -92,7 +92,7 @@ export class MapContainer extends Component {
       height: '91%'
     }
 
-    if (!this.props.sorted) return <Loading />
+    if (!this.props.gifts) return <Loading />
 
      else return (
       <div className="mapDiv">

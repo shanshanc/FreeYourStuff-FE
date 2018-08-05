@@ -14,7 +14,6 @@ import MapContainer from './components/Map/Map';
 import LandingPage from './components/LandingPage/LandingPage';
 import Update from './components/Update/Update';
 import Loading from './components/loading/Loading';
-import Fireworks from './components/Fireworks/Fireworks';
 
 
 class App extends Component {
@@ -34,9 +33,10 @@ class App extends Component {
 
 componendDidUpdate() {
   if (this.props.newPhoto) {
-    
   }
 } 
+
+
 
 myList = () =>  <StuffList stuffList={this.props.gifts} myMap={this.myMap} myLocation={this.props.location} /> 
 myMap = (e) => <MapContainer stuffList={this.props.gifts} location={this.props.location} /> 
@@ -44,6 +44,7 @@ myUpdate = () =>  <Update gift={this.props.gifts[0]} />
 myLandingPage = () => <LandingPage closest={this.props.gifts[0]} />
 
   render() {
+    console.log(this.props)
     if (this.props.loading) return <Loading />
 
     else {
