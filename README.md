@@ -6,7 +6,7 @@ A __mobile-first__ platform designed to help facilitate the culture of __giving 
 
 <br>
 <center>
-<img src="https://res.cloudinary.com/dh9xnvxbz/image/upload/v1535125076/LogoBigo2.png " alt="logo of app" width="300" height="300" >
+<img src="https://res.cloudinary.com/dh9xnvxbz/image/upload/v1535125076/LogoBigo2.png" alt="logo of app" width="300" height="300" >
 </center>
 <br>
 
