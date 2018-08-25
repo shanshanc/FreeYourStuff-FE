@@ -47,7 +47,7 @@ plus many more features to come!
 
 ### Installing
 
-1. Clone both the __Free Your Stuff__ front-end and the __Free Your Stuff__ back-end 
+1. Clone both the __Free Your Stuff__ [front-end](https://github.com/OliWalker/FreeYourStuff-FE/) and the __Free Your Stuff__ [back-end](https://github.com/OliWalker/FreeYourStuff-BE)
 2. In the command line, for both repos, enter:
 ```
 npm install
