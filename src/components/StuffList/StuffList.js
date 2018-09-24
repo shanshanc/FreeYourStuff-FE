@@ -8,7 +8,7 @@ import Loading from '../loading/Loading';
 class StuffList extends Component {
   render() {
     if (!this.props.gifts) return <Loading />;
-    else
+    else {
       return (
         <div className="stuffList">
           <h2>Find your gift</h2>
@@ -23,6 +23,7 @@ class StuffList extends Component {
           })}
         </div>
       );
+    }
   }
 }
 

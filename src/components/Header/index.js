@@ -1,45 +1,45 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-
-import './Header.css'
+import './Header.css';
 
 export default class Header extends Component {
   render() {
-
     let path = this.props.location.pathname;
-    let header
+    let header;
     switch (path) {
       case '/':
-        header = 'Home'
-        break
+        header = 'Home';
+        break;
       case '/add':
-        header = 'Give a gift'
-        break
+        header = 'Give a gift';
+        break;
       case '/update':
-        header = 'Update a gift'
-        break
+        header = 'Update a gift';
+        break;
       case '/list':
-        header = 'List View'
-        break
+        header = 'List View';
+        break;
       case '/map':
-        header = 'Map View'
-        break
+        header = 'Map View';
+        break;
       default:
-        header = 'Free Your Stuff'
+        header = 'Free Your Stuff';
     }
-
 
     return (
       <div className="main-header">
-      <Link to="/">
-        <i className="fas fa-arrow-left"></i>
-      </Link>
+        <Link to="/">
+          <i className="fas fa-arrow-left" />
+        </Link>
         <p>{header}</p>
-      <Link to='/'>
-        <img src="./images/icons/android-icon-144x144.png" alt="small logo icon"></img>
-      </Link>
+        <Link to="/">
+          <img
+            src="./images/icons/android-icon-144x144.png"
+            alt="small logo icon"
+          />
+        </Link>
       </div>
-    )
+    );
   }
 }

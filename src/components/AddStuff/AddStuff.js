@@ -16,6 +16,20 @@ import Loading from '../loading/Loading';
 const CLOUDINARY_PRESET = 'xnny1dgk';
 
 class AddStuff extends Component {
+  state = {
+    deadTags: [],
+    recording: false,
+    finished: false,
+    loading: false
+  };
+
+  componentDidUpdate() {
+    if (this.props.cloudinaryURL.length > 1 && this.props.needTags) {
+      this.props.getTagsFromGoogle(this.props.cloudinaryURL);
+      this.props.getGeocode(this.props.location);
+    }
+  }
+
   uploadPic = (files, event) => {
     let picture;
     if (files[0]) picture = files[0];
@@ -26,13 +40,6 @@ class AddStuff extends Component {
     formData.append('api_key', '981645852329497');
     this.props.urlFromCloudinary(formData);
   };
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.cloudinaryURL.length > 1 && this.props.needTags) {
-      this.props.getTagsFromGoogle(this.props.cloudinaryURL);
-      this.props.getGeocode(this.props.location);
-    }
-  }
 
   submitGift = () => {
     let finalTags = this.props.googleTags.filter(
@@ -49,17 +56,8 @@ class AddStuff extends Component {
     this.setState({ finished: true });
   };
 
-  // setRef = (webcam) => {
-  //   this.webcam = webcam
-  // }
-
-  // startRecording = () => {
-  //   this.setState({recording: true})
-  // }
-
   capture = () => {
     const imageSrc = this.webcam.getScreenshot();
-    //Image Src = base64 string to send to google
     this.setState({
       recording: false,
       video: '',
@@ -67,16 +65,6 @@ class AddStuff extends Component {
       taken: true
     });
   };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      deadTags: [],
-      recording: false,
-      finished: false,
-      loading: false
-    };
-  }
 
   killTag = e => {
     e.target.classList.add('dying');

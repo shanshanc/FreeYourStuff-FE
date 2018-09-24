@@ -21,8 +21,7 @@ import Update from './components/Update/Update';
 import Loading from './components/loading/Loading';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  componentDidMount() {
     this.props.getAllGifts();
     this.props.getLocation();
   }
@@ -34,11 +33,6 @@ class App extends Component {
       this.props.location.lat
     ) {
       this.props.sortAllGifts();
-    }
-  }
-
-  componendDidUpdate() {
-    if (this.props.newPhoto) {
     }
   }
 

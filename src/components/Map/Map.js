@@ -7,6 +7,40 @@ import MapSlider from '../MapSlider/MapSlider';
 import Loading from '../loading/Loading';
 
 export class MapContainer extends Component {
+  state = {
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {},
+    infoWindowTags: [],
+    initialCenter: { lat: 41.3851, lng: 2.1734 },
+    center: {}
+  };
+
+  componentDidMount() {
+    if (this.props.listToMapLocation.lat) {
+      let locationNow = {
+        lat: this.props.listToMapLocation.lat,
+        lng: this.props.listToMapLocation.lng
+      };
+      this.setState({
+        center: locationNow,
+        loaded: true
+      });
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.state.loaded) {
+      this.onMarkerClick(
+        this.props.listToMapLocation.current.props,
+        this.props.listToMapLocation.current.marker
+      );
+      this.setState({
+        loaded: false
+      });
+    }
+  }
+
   addMarker = props => {
     return (
       <Marker
@@ -54,44 +88,6 @@ export class MapContainer extends Component {
         e
       );
   };
-
-  componentDidMount() {
-    if (this.props.listToMapLocation.lat) {
-      let locationNow = {
-        lat: this.props.listToMapLocation.lat,
-        lng: this.props.listToMapLocation.lng
-      };
-      this.setState({
-        center: locationNow,
-        loaded: true
-      });
-    }
-  }
-
-  componentDidUpdate() {
-    if (this.state.loaded) {
-      this.onMarkerClick(
-        this.props.listToMapLocation.current.props,
-        this.props.listToMapLocation.current.marker
-      );
-      this.setState({
-        loaded: false
-      });
-    }
-  }
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showingInfoWindow: false,
-      activeMarker: {},
-      selectedPlace: {},
-      infoWindowTags: [],
-      initialCenter: { lat: 41.3851, lng: 2.1734 },
-      center: {}
-    };
-  }
 
   render() {
     const style = {
