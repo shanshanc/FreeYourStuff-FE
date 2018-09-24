@@ -1,21 +1,20 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-
-import './Fireworks.css'
+import './Fireworks.css';
 
 export default class Fireworks extends Component {
   render() {
     return (
       <div className="fireworks">
         <div className="pyro">
-            <div className="before"></div>
-            <div className="after"></div>
+          <div className="before" />
+          <div className="after" />
         </div>
-        <Link to='/'>
+        <Link to="/">
           <button className="goBack"> Go Back </button>
         </Link>
       </div>
-    )
+    );
   }
 }

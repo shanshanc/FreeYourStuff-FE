@@ -1,4 +1,3 @@
-
 .landingPage {
   display: flex;
   flex-direction: column;
@@ -52,11 +51,11 @@ h2 {
 .button:hover {
   transition: background-color, .2s;
   background-color: var(--hover);
-  
+
 }
 
 .buttonText {
-  display:none;
+  display: none;
 }
 
 .noUpdate {
@@ -72,17 +71,8 @@ h2 {
   background-color: lightgrey;
 }
 
-
 Link {
   text-decoration: none;
-}
-
-
-
-
-
-@media (min-width: 600px) {
-
 }
 
 @media (min-width: 900px) {
@@ -100,7 +90,7 @@ Link {
   .landingPageMantra {
     display: inline;
   }
-  
+
   .button {
     width: 20vw;
     height: 20vh;
@@ -111,7 +101,7 @@ Link {
   }
 
   .buttonText {
-    display:inline;
+    display: inline;
   }
 }
 
@@ -133,6 +123,7 @@ Link {
     margin: 13px;
 
   }
+
   .button i {
     font-size: 3rem;
   }
