@@ -147,7 +147,7 @@ const mapStateToProps = state => ({
 });
 
 const wrappedMap = GoogleApiWrapper({
-  // apiKey: 'AIzaSyBzBvfaosQJN9iUMMRAPD9ATnIPjofrCto'
+  apiKey: 'AIzaSyBzBvfaosQJN9iUMMRAPD9ATnIPjofrCto'
 })(MapContainer);
 
 export default connect(
