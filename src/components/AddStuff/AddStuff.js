@@ -13,7 +13,7 @@ import './AddStuff.css';
 import Fireworks from '../Fireworks/Fireworks';
 import Loading from '../loading/Loading';
 
-const CLOUDINARY_PRESET = 'xnny1dgk';
+const CLOUDINARY_PRESET = 'freeYourStuff';
 
 class AddStuff extends Component {
   state = {
