@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom'
 
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import LocationAPI from './redux/middlewares/LocationAPI';
 import ServerAPI from './redux/middlewares/ServerAPI';
 import Cloudinary from './redux/middlewares/Cloudinary';
@@ -19,19 +19,22 @@ import DeleteGiftFromDB from './redux/middlewares/DeleteGiftFromDB';
 import reducers from './redux/reducers'
 
 
-let Store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ &&
-  window.__REDUX_DEVTOOLS_EXTENSION__(),applyMiddleware(
-    ServerAPI, LocationAPI, Cloudinary, GoogleTags, GoogleGeocode,
-  NewGiftToDb, UpdateGiftInDB, DeleteGiftFromDB))
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  reducers,
+  composeEnhancers(applyMiddleware(
+    ServerAPI, LocationAPI, Cloudinary, GoogleTags, GoogleGeocode, NewGiftToDb, UpdateGiftInDB, DeleteGiftFromDB
+  ))
+)
 
 
 ReactDOM.render(
   <BrowserRouter>
-    <Provider store={Store}>
+    <Provider store={store}>
       <App />
     </Provider>
   </BrowserRouter>
 
 
-, document.getElementById('root'));
+  , document.getElementById('root'));
 registerServiceWorker();
