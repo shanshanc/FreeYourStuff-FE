@@ -3,28 +3,30 @@ import React, { Component } from 'react'
 import PhotoMaker from '../PhotoMaker/PhotoMaker';
 import TagPrompts from '../TagPrompts/TagPrompts';
 import { connect } from 'react-redux';
-import { urlFromCloudinary, getTagsFromGoogle, getGeocode, sendNewGiftToDB} from '../../redux/actions'
+import { urlFromCloudinary, getTagsFromGoogle, getGeocode, sendNewGiftToDB } from '../../redux/actions'
 import './AddStuff.css'
 import Fireworks from '../Fireworks/Fireworks';
 import Loading from '../loading/Loading';
 
-const CLOUDINARY_PRESET = 'xnny1dgk'
+import { CloudinaryPreset, CloudinaryAPIKey } from '../../config';
+
+const CLOUDINARY_PRESET = CloudinaryPreset;
 
 class AddStuff extends Component {
 
   uploadPic = (files, event) => {
     let picture
     if (files[0]) picture = files[0]
-    else picture = files.target.files[0]    
+    else picture = files.target.files[0]
     let formData = new FormData()
     formData.append('file', picture)
     formData.append('upload_preset', CLOUDINARY_PRESET)
-    formData.append('api_key', '981645852329497')
+    formData.append('api_key', CloudinaryAPIKey);
     this.props.urlFromCloudinary(formData)
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if(this.props.cloudinaryURL.length > 1 && this.props.needTags) { 
+  componentDidUpdate (prevProps, prevState) {
+    if (this.props.cloudinaryURL.length > 1 && this.props.needTags) {
       this.props.getTagsFromGoogle(this.props.cloudinaryURL)
       this.props.getGeocode(this.props.location)
     }
@@ -40,7 +42,7 @@ class AddStuff extends Component {
       tags: finalTags
     }
     this.props.sendNewGiftToDB(newGift)
-    this.setState({finished: true})
+    this.setState({ finished: true })
   }
 
 
@@ -64,9 +66,9 @@ class AddStuff extends Component {
   };
 
 
-  constructor(props) {
+  constructor (props) {
     super(props)
-    this.state={
+    this.state = {
       deadTags: [],
       recording: false,
       finished: false,
@@ -77,15 +79,16 @@ class AddStuff extends Component {
 
   killTag = (e) => {
     e.target.classList.add('dying')
-    this.setState({ deadTags: [...this.state.deadTags, e.target.id]})
+    this.setState({ deadTags: [...this.state.deadTags, e.target.id] })
   }
 
   dissapear = (e) => e.target.classList.add('dead')
-  
 
-  render() {
-    if (this.state.finished === true) { return <Fireworks />
-  } else if (this.state.recording) {
+
+  render () {
+    if (this.state.finished === true) {
+      return <Fireworks />
+    } else if (this.state.recording) {
       // const videoConstraints = {
       //   video:true,
       //   audio:false
@@ -103,27 +106,27 @@ class AddStuff extends Component {
     } else if (this.props.googleTags.length > 0) {
       return (
         <div className="picturePresent">
-          <img src={this.props.cloudinaryURL} alt="yourPhoto"/>
+          <img src={this.props.cloudinaryURL} alt="yourPhoto" />
           <div className="tags">
             {this.props.googleTags.map((tag, i) => {
               return <p key={i}
-                        id={tag} 
-                        onClick={this.killTag}
-                        onTransitionEnd={this.dissapear}> {tag} </p>
+                id={tag}
+                onClick={this.killTag}
+                onTransitionEnd={this.dissapear}> {tag} </p>
             })}
           </div>
-          <TagPrompts number={2} submitStuff={this.submitGift} buttonName={'Send'}/>
+          <TagPrompts number={2} submitStuff={this.submitGift} buttonName={'Send'} />
         </div>
       )
     } else if (this.props.newGift.picture) {
 
-      return(<h1> SUCcESS </h1>)
-    
+      return (<h1> SUCcESS </h1>)
+
     } else if (this.props.cloudinaryURL.length === 0) {
       return (
         <div className="uploader">
           <PhotoMaker uploadPic={this.uploadPic} startRecording={this.startRecording} />
-          <TagPrompts number={3} buttonName={'Send'}/>
+          <TagPrompts number={3} buttonName={'Send'} />
         </div>
       )
     } else return <Loading />
@@ -142,7 +145,7 @@ const mapStateToProps = (state) => ({
   needTags: state.needTags,
   address: state.address,
   newGift: state.newGift,
- 
+
 })
 
 const mapDispatchToProps = (dispatch) => ({

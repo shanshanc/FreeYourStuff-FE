@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import TagPrompts from '../TagPrompts/TagPrompts'
 import { connect } from 'react-redux';
-import { urlFromCloudinary, getTagsFromGoogle, updateGiftInDB, deleteGiftFromDB} from '../../redux/actions'
+import { urlFromCloudinary, getTagsFromGoogle, updateGiftInDB, deleteGiftFromDB } from '../../redux/actions'
 import './Update.css'
 import Loading from '../loading/Loading';
 import Fireworks from '../Fireworks/Fireworks';
+import { CloudinaryPreset, CloudinaryAPIKey } from '../../config';
 
-const CLOUDINARY_PRESET = 'xnny1dgk'
+const CLOUDINARY_PRESET = CloudinaryPreset;
 
 
 class Update extends Component {
@@ -18,13 +19,13 @@ class Update extends Component {
     let formData = new FormData()
     formData.append('file', picture)
     formData.append('upload_preset', CLOUDINARY_PRESET)
-    formData.append('api_key', '981645852329497')
-    
+    formData.append('api_key', CloudinaryAPIKey);
+
     this.props.urlFromCloudinary(formData)
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if(this.props.cloudinaryURL.length > 1 && this.props.needTags) { 
+  componentDidUpdate (prevProps, prevState) {
+    if (this.props.cloudinaryURL.length > 1 && this.props.needTags) {
       this.props.getTagsFromGoogle(this.props.cloudinaryURL)
     }
   }
@@ -41,13 +42,13 @@ class Update extends Component {
     }
 
     this.props.updateGiftInDB(updateGift)
-    this.setState({finished: true})
+    this.setState({ finished: true })
 
   }
 
   killTag = (e) => {
     e.target.classList.add('dying')
-    this.setState({ deadTags: [...this.state.deadTags, e.target.id]})
+    this.setState({ deadTags: [...this.state.deadTags, e.target.id] })
   }
 
   dissapear = (e) => {
@@ -56,62 +57,62 @@ class Update extends Component {
 
   deleteGift = () => {
     this.props.deleteGiftFromDB(this.props.gift._id)
-    this.setState({finished: true})
+    this.setState({ finished: true })
 
   }
 
-  constructor(props) {
-    super(props) 
+  constructor (props) {
+    super(props)
     this.state = {
-      deadTags:[],
+      deadTags: [],
       finished: false
     }
   }
 
 
-  render() {
+  render () {
 
     if (this.state.finished === true) {
       return <Fireworks />
-    } else if (this.props.cloudinaryURL.length === 0) { 
-    return (
-      <div className="updater">
+    } else if (this.props.cloudinaryURL.length === 0) {
+      return (
+        <div className="updater">
 
-      <span className="updateGift"> click to update </span>
-      <input type="file" id="fileuploader" name="file" accept="*" onChange={this.updatePic}/>
-      <label htmlFor="fileuploader">
-        <img src={this.props.gift ? this.props.gift.picture : null} 
-        className="updateGlow"
-        onTransitionEnd={this.glowImage} 
-        ref="glowyImage"
-        alt="gift To Update"/>
-      </label>
+          <span className="updateGift"> click to update </span>
+          <input type="file" id="fileuploader" name="file" accept="*" onChange={this.updatePic} />
+          <label htmlFor="fileuploader">
+            <img src={this.props.gift ? this.props.gift.picture : null}
+              className="updateGlow"
+              onTransitionEnd={this.glowImage}
+              ref="glowyImage"
+              alt="gift To Update" />
+          </label>
 
 
-        <div className="deleteGift" onClick={this.deleteGift}>
-          <span> All Gone! </span>
+          <div className="deleteGift" onClick={this.deleteGift}>
+            <span> All Gone! </span>
+          </div>
+
         </div>
-
-      </div>
-    )
-  } else if (this.props.googleTags.length > 0) {
-    return (
-      <div className="picturePresent">
-          <img src={this.props.cloudinaryURL} alt="yourPhoto"/>
+      )
+    } else if (this.props.googleTags.length > 0) {
+      return (
+        <div className="picturePresent">
+          <img src={this.props.cloudinaryURL} alt="yourPhoto" />
           <div className="tags">
             {this.props.googleTags.map((tag, i) => {
               return <p key={i}
-                        id={tag} 
-                        onClick={this.killTag}
-                        onTransitionEnd={this.dissapear}> {tag} </p>
+                id={tag}
+                onClick={this.killTag}
+                onTransitionEnd={this.dissapear}> {tag} </p>
             })}
           </div>
-          <TagPrompts number={2} submitStuff={this.updateGift} buttonName={'Update'}/>
-      </div>
-    )
-  } else {
-    return <Loading />
-  }
+          <TagPrompts number={2} submitStuff={this.updateGift} buttonName={'Update'} />
+        </div>
+      )
+    } else {
+      return <Loading />
+    }
   }
 }
 
@@ -127,7 +128,7 @@ const mapStateToProps = (state) => ({
   needTags: state.needTags,
   address: state.address,
   newGift: state.newGift,
- 
+
 })
 
 const mapDispatchToProps = (dispatch) => ({
