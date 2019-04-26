@@ -6,9 +6,8 @@ export default store => next => action => {
     ...action,
     type: action.type + '_REQUEST'
   })
-  console.log("LOCATION REQUEST")
+  
   navigator.geolocation.getCurrentPosition((pos) => {
-    console.log(pos)
     const lat = Number(pos.coords.latitude);
     const lng = Number(pos.coords.longitude);
     next({

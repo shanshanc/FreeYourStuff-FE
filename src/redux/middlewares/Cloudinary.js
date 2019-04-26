@@ -1,7 +1,8 @@
 import axios from "axios";
 import { urlFromCloudinarySuccess } from '../actions'
+import { CloudinaryUpload } from '../../config';
 
-const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dh9xnvxbz/upload/';
+const CLOUDINARY_URL = CloudinaryUpload;
 
 
 

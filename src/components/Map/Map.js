@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { GoogleMapAPIKey } from "../../config";
 
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import './Map.css'
 import MapSlider from '../MapSlider/MapSlider';
 import Loading from '../loading/Loading';
- 
+
+const GOOGLE_KEY = GoogleMapAPIKey;
+
 export class MapContainer extends Component {
 
   addMarker = (props) => {
     return (
       <Marker key={props._id}
       position={props.location}
-      ref={props.location} 
       title={props.tags.join(" ")}
       onClick={this.onMarkerClick} 
       />
@@ -113,9 +115,11 @@ export class MapContainer extends Component {
           <InfoWindow className="infoWindow"
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
+            <div>
             {this.state.infoWindowTags.map((tag, i) => {
               return <h5 className="infoTag" key={i}># {tag}</h5>
             })}
+            </div>
           </InfoWindow>
 
         </Map>
@@ -128,7 +132,7 @@ export class MapContainer extends Component {
   }
 } 
 
-const mapDispatchToProps = (dispatch) => {}
+const mapDispatchToProps = (dispatch) => ({})
 
 const mapStateToProps = (state) => ({
 
@@ -141,7 +145,7 @@ const mapStateToProps = (state) => ({
 })
 
 const wrappedMap = GoogleApiWrapper({
-  apiKey: 'AIzaSyBzBvfaosQJN9iUMMRAPD9ATnIPjofrCto'
+  apiKey: GOOGLE_KEY
 })(MapContainer)
 
 export default connect(mapStateToProps, mapDispatchToProps)(wrappedMap);

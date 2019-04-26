@@ -53,7 +53,6 @@ const reducer = (state = initialState, action) => {
       
 
     case 'SORT_ALL_GIFTS':
-      console.log("TRING TO SORT")
       let data = state.gifts;
       data.forEach(gift => {
         if (gift.location) gift.distance = helpers.getDistance(gift.location.lat, gift.location.lng, state.location.lat, state.location.lng)

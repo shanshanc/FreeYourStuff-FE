@@ -1,6 +1,7 @@
 import { getGeocodeSuccess } from "../actions";
+import { GoogleMapAPIKey } from "../../config";
 
-const GOOGLE_KEY = 'AIzaSyBzBvfaosQJN9iUMMRAPD9ATnIPjofrCto'
+const GOOGLE_KEY = GoogleMapAPIKey;
 
 
 

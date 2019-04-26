@@ -1,7 +1,7 @@
 import { getTagsFromGoogleSuccess } from '../actions'
+import { GoogleMapAPIKey } from "../../config";
 
-
-const GOOGLE_KEY = 'AIzaSyBzBvfaosQJN9iUMMRAPD9ATnIPjofrCto'
+const GOOGLE_KEY = GoogleMapAPIKey;
 const GOOGLE_VISION = `https://vision.googleapis.com/v1/images:annotate?key=${GOOGLE_KEY}`
 
 const googleVisionRequestFormat = (url) => {

@@ -44,7 +44,6 @@ myUpdate = () =>  <Update gift={this.props.gifts[0]} />
 myLandingPage = () => <LandingPage closest={this.props.gifts[0]} />
 
   render() {
-    console.log(this.props)
     if (this.props.loading) return <Loading />
 
     else {
