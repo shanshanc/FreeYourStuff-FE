@@ -19,41 +19,41 @@ import Loading from './components/loading/Loading';
 class App extends Component {
 
 
-  constructor(props) {
-    super (props)
+  constructor (props) {
+    super(props)
     this.props.getAllGifts();
     this.props.getLocation();
- }
-
- componentDidUpdate(prevProps) {
-  if (this.props.sorted === false && this.props.gifts.length > 0 && this.props.location.lat) {
-    this.props.sortAllGifts()
   }
-}
 
-componendDidUpdate() {
-  if (this.props.newPhoto) {
+  componentDidUpdate (prevProps) {
+    if (this.props.sorted === false && this.props.gifts.length > 0 && this.props.location.lat) {
+      this.props.sortAllGifts()
+    }
   }
-} 
+
+  componendDidUpdate () {
+    if (this.props.newPhoto) {
+    }
+  }
 
 
 
-myList = () =>  <StuffList stuffList={this.props.gifts} myMap={this.myMap} myLocation={this.props.location} /> 
-myMap = (e) => <MapContainer stuffList={this.props.gifts} location={this.props.location} /> 
-myUpdate = () =>  <Update gift={this.props.gifts[0]} />
-myLandingPage = () => <LandingPage closest={this.props.gifts[0]} />
+  myList = () => <StuffList stuffList={this.props.gifts} myMap={this.myMap} myLocation={this.props.location} />
+  myMap = (e) => <MapContainer stuffList={this.props.gifts} location={this.props.location} />
+  myUpdate = () => <Update gift={this.props.gifts[0]} />
+  myLandingPage = () => <LandingPage closest={this.props.gifts[0]} />
 
-  render() {
+  render () {
     if (this.props.loading) return <Loading />
 
     else {
       return (
         <div className="App">
-          
-          <Route path='/' component={Header}/>
+
+          <Route path='/' component={Header} />
           <Route exact path='/' render={this.myLandingPage} />
           <Route path='/list' render={this.myList} />
-          <Route path='/map' render={this.myMap}/>
+          <Route path='/map' render={this.myMap} />
           <Route path='/add' component={AddStuff} />
           <Route path='/update' render={this.myUpdate} />
 

@@ -23,30 +23,28 @@ export class MapContainer extends Component {
       center: {},
     }
 
-    this.references = {};
-
   }
-
-  renderMarker = (props) => {
+  addMarker = (props) => {
     return (
       <Marker key={props._id}
-        ref={ref => this.references[props._id] = ref}
         position={props.location}
+        ref={props.location}
         title={props.tags.join(" ")}
         onClick={this.onMarkerClick}
       />
     )
   }
 
-  onMarkerClick = (pin, marker, e) => {
-    let tags = pin.tags;
-    if (pin.location.lat) {
-      const location = { lat: pin.location.lat, lng: pin.location.lng }
+  onMarkerClick = (props, marker, e) => {
+    const allTags = props.title.split(" ");
+    const uniqueTags = [... new Set(allTags)];
+    if (props.position.lat) {
+      let location = { lat: props.position.lat, lng: props.position.lng }
       this.setState({
-        selectedPlace: pin,
+        selectedPlace: props,
         activeMarker: marker,
         showingInfoWindow: true,
-        infoWindowTags: tags,
+        infoWindowTags: uniqueTags,
         center: location,
       });
     }
@@ -66,7 +64,7 @@ export class MapContainer extends Component {
     this.props.stuffList.forEach(pic => {
       if (pic.picture === e.target.src) pin = pic
     })
-    if (pin.location) this.onMarkerClick(pin, this.references[pin._id].current, e)
+    if (pin.location) this.onMarkerClick(pin.location.current.props, pin.location.current.marker, e)
 
   }
 
@@ -111,17 +109,15 @@ export class MapContainer extends Component {
 
 
           {this.props.stuffList.map(item => {
-            return this.renderMarker(item)
+            return this.addMarker(item)
           })}
 
           <InfoWindow className="infoWindow"
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
-            <div>
-              {this.state.infoWindowTags.map((tag, i) => {
-                return <h5 className="infoTag" key={i}># {tag}</h5>
-              })}
-            </div>
+            {this.state.infoWindowTags.map((tag, i) => {
+              return <h5 className="infoTag" key={i}># {tag}</h5>
+            })}
           </InfoWindow>
 
         </Map>
@@ -134,7 +130,7 @@ export class MapContainer extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({})
+const mapDispatchToProps = (dispatch) => { }
 
 const mapStateToProps = (state) => ({
 
@@ -146,7 +142,7 @@ const mapStateToProps = (state) => ({
 
 })
 
-const wrappedMap = GoogleApiWrapper({
+const wrappedMap = GoogleApiWrapper({ //this looks fine
   apiKey: GOOGLE_KEY
 })(MapContainer)
 
