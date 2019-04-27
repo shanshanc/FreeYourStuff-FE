@@ -18,7 +18,7 @@ class StuffList extends Component {
     return (
       <div className="stuffList">
       
-      <h2> Find a gift </h2>
+      <h2 class="h2tag"> Find a gift </h2>
 
         {this.props.gifts.map(item => {
           return <Stuff key={item._id} data={item} myLocation={this.props.location}/>
